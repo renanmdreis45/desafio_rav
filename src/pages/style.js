@@ -40,15 +40,3 @@ export const Interface = styled.div `
   top: 159px;
 `;
 
-export const Mov = styled.div `
-  box-sizing: border-box;
-
-  position:absolute;
-  width: 458px;
-  height: 362px;
-
-  background: #FFFFFF;
-  border: 2px solid #ECEEF7;
-  border-radius: 6px;
-`;
-
