@@ -191,32 +191,62 @@ export const RecDesp = styled.div `
   gap: 30px;
   margin-top: 12px;
 
-  label {
+  div {
+    position: relative;
     display: flex;
     flex-direction: row;
     flex-itens: row;
     align-items: center;
-    gap: 8px;
-
-    input {
-        width: 16px;
-        height: 16px;
-        color: #343640;
-        font-weight: 400;
-    }
-    
-    input:checked + label {
-        font-weight: 700;
-    }
-    
-    label + input {
-        margin-left: 30px;
-    }
-
-    label {
-        margin-left: 8px;
-        padding-right: 16px;
-    }
   } 
   
+`;
+
+export const RadioLabel = styled.label `
+  position: absolute;
+  top: 2.94%;
+  left: 0%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid #ccc;
+`;
+
+export const Radio = styled.input `
+  z-index: 0;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  color: #343640;
+  
+  &:checked + ${RadioLabel} {
+      background: #0889A3;
+      font-weight: 700;
+      border: 2px solid #0889A3;;
+
+      &::before {
+        background-color:blue;
+      }
+
+  }
+`;
+
+export const Column = styled.td `
+  font-weight: 600;
+  text-align: left;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-bottom: 1px solid #DADADA;
+
+  button {
+    border:none;
+    background-color: #FFFFFF;
+    width: 24px;
+    height: 24px;
+
+    img {
+      width: 14px;
+      height: 18px;
+    }
+  }
 `;

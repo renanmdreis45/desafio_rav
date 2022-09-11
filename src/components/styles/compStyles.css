@@ -1,0 +1,57 @@
+.column-bold {
+    font-weight: bold;
+}
+
+td {
+    font-style: normal;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    letter-spacing: 0.01em;
+}
+
+.Receita {
+    color:#5932EA;
+}
+
+.Despesa {
+    color: #EA3232;
+}
+
+.list-table {
+  box-sizing: border-box;
+  overflow-y: hidden;
+  max-height: 100%;
+  position: absolute;
+  width: 1116px;
+  height: 176px;
+  top: 387px;
+  
+  padding: 19px 38px 21px 52px;
+
+  background: #FFFFFF;
+  border: 2px solid #ECEEF7;
+  border-radius: 6px;
+}
+
+.table-container {
+    padding-right: 10px;
+    overflow-y: scroll;
+    max-height: 100%;
+}
+
+.table-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background-color: #C7CAD9;
+    border-radius: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: #0889A3;
+    border-radius: 8px;
+}
+
+

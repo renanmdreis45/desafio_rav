@@ -1,6 +1,6 @@
 import React, {useState, useContext } from 'react';
 import { GlobalContext } from '../context/global';
-import {Mov, Form, ValueData, Value, Data, Observacao, Tipo, RecDesp, Rec, Desp} from "./compStyles";
+import {Mov, Form, ValueData, Value, Data, Observacao, Tipo, RecDesp, Radio, RadioLabel} from "./styles/compStyles";
 import Mais from './icons/mais.png'
 
 export const AddMovement = () => {
@@ -12,7 +12,7 @@ export const AddMovement = () => {
   const [tipo, setTipo] = useState('');
 
 
-  const { addMovements } = useContext(GlobalContext);
+  const { addMovement } = useContext(GlobalContext);
   
   const handleChangeReceita = () => {
     setReceita(!receita);
@@ -24,7 +24,7 @@ export const AddMovement = () => {
     setTipo('Despesa');
   }
 
-  const onSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
  
     const newMov = {
@@ -35,10 +35,7 @@ export const AddMovement = () => {
         tipo
     }
     
-    addMovements(newMov);
-    
-    console.log(newMov);
-
+    addMovement(newMov);
   
   }
 
@@ -46,7 +43,7 @@ export const AddMovement = () => {
       <>
         <Mov>
           <h2> Movimentações </h2>
-          <Form onSubmit={onSubmit}>
+          <Form onSubmit={handleSubmit}>
             <ValueData>
                 <Value>
                 <label htmlFor="valor">Valor</label>
@@ -64,15 +61,17 @@ export const AddMovement = () => {
             <Tipo>
               <p>Tipo de movimentação</p>
               <RecDesp>
-                  <label htmlFor='receita'>
-                      <input type="radio" name="receita" value="Receita" checked={receita} onChange={handleChangeReceita} />
-                      <label htmlFor='receita'>Receita</label>
-                      <input type="radio" name="receita" value="Despesa" checked={despesa} onChange={handleChangeDespesa} />
-                      <label htmlFor='receita'>Despesa</label>
-                  </label>
+                  <div>
+                      <Radio type="radio" name="receita" value="Receita" checked={receita} onChange={handleChangeReceita} />
+                      <RadioLabel />
+                      <span> Receita </span>
+                      <Radio type="radio" name="receita" value="Despesa" checked={despesa} onChange={handleChangeDespesa} />
+                      <RadioLabel />
+                      <span> Despesa </span>
+                  </div>
               </RecDesp>
             </Tipo>
-            <button type='submit'> <img src={Mais} /> ADICIONAR  </button>
+            <button> <img src={Mais} alt="sinal mais" /> ADICIONAR  </button>
           </Form>
         </Mov>
       </>

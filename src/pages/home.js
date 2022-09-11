@@ -1,7 +1,9 @@
 import React from "react";
 import {Container, Header, Interface} from "./style";
 import {AddMovement} from '../components/AddMov';
+import {MovementList} from '../components/MovementList'
 import { GlobalProvider } from "../context/global";
+
 
 export default function Home() {
     
@@ -15,6 +17,7 @@ export default function Home() {
                 </Header>
                 <Interface>
                   <AddMovement />
+                  <MovementList />
                 </Interface>
              </Container>           
             </GlobalProvider>
