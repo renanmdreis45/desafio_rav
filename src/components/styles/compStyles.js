@@ -110,6 +110,7 @@ export const Value = styled.div `
   label {
     width:39px;
     font-weight: 600;
+    font-family: Poppins;
   }
 
 `;
@@ -141,6 +142,7 @@ export const Data = styled.div `
     width:35px;
     font-weight: 600;
     margin-left: 10px;
+    font-family: Poppins;
   }
 `;
 
@@ -152,9 +154,10 @@ export const Observacao = styled.div `
   label {
     font-weight: 400;
     line-height: 21px;
-    
+    font-family: Poppins;
     span {
         font-weight: bold;
+        font-family: Poppins;
     }
   }
 
@@ -181,6 +184,7 @@ export const Tipo = styled.div `
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
+    font-family: Poppins;
   }
 
 `;
@@ -190,15 +194,20 @@ export const RecDesp = styled.div `
   flex-direction: row;
   gap: 30px;
   margin-top: 12px;
+`;
 
-  div {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    flex-itens: row;
-    align-items: center;
-  } 
-  
+export const Item = styled.div `
+   position: relative;
+   display: flex;
+   flex-direction: row;
+   flex-itens: row;
+   align-items: center;
+`;
+
+export const LegendRadio = styled.span `
+    margin-left: 8px;
+    font-weight: 400;
+    font-family: Roboto;
 `;
 
 export const RadioLabel = styled.label `
@@ -210,24 +219,33 @@ export const RadioLabel = styled.label `
   border-radius: 50%;
   background: white;
   border: 1px solid #ccc;
+
+  img {
+    opacity: 0;
+  }
 `;
 
 export const Radio = styled.input `
-  z-index: 0;
+  z-index: 1;
+  opacity: 0;
   width: 16px;
   height: 16px;
   cursor: pointer;
-  color: #343640;
   
   &:checked + ${RadioLabel} {
       background: #0889A3;
-      font-weight: 700;
-      border: 2px solid #0889A3;;
-
-      &::before {
-        background-color:blue;
+      border: 2px solid #0889A3;
+      
+      img {
+        opacity: 1;
+        position: absolute;
+        left: 0%;
+        top: 15.95%;
       }
+  }
 
+  &:checked + ${RadioLabel} + ${LegendRadio}  {
+    font-weight: 700;
   }
 `;
 
@@ -249,4 +267,16 @@ export const Column = styled.td `
       height: 18px;
     }
   }
+`;
+
+export const Grafico = styled.div `
+  box-sizing: border-box;
+  width: 583px;
+  height: 362px;
+  position: absolute;
+  left:533px;
+
+  background: #FFFFFF;
+  border: 2px solid #ECEEF7;
+  border-radius: 6px;
 `;

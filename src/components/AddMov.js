@@ -1,6 +1,7 @@
 import React, {useState, useContext } from 'react';
 import { GlobalContext } from '../context/global';
-import {Mov, Form, ValueData, Value, Data, Observacao, Tipo, RecDesp, Radio, RadioLabel} from "./styles/compStyles";
+import {Mov, Form, ValueData, Value, Data, Observacao, Tipo, RecDesp, Item, Radio, RadioLabel, LegendRadio} from "./styles/compStyles";
+import Check from './styles/check.png'
 import Mais from './icons/mais.png'
 
 export const AddMovement = () => {
@@ -15,13 +16,15 @@ export const AddMovement = () => {
   const { addMovement } = useContext(GlobalContext);
   
   const handleChangeReceita = () => {
-    setReceita(!receita);
+    setReceita(true);
     setTipo('Receita');
+    setDespesa(false);
   }
 
   const handleChangeDespesa = () => {
-    setDespesa(!despesa);
+    setDespesa(true);
     setTipo('Despesa');
+    setReceita(false);
   }
 
   const handleSubmit = (e) => {
@@ -61,14 +64,16 @@ export const AddMovement = () => {
             <Tipo>
               <p>Tipo de movimentação</p>
               <RecDesp>
-                  <div>
+                  <Item>
                       <Radio type="radio" name="receita" value="Receita" checked={receita} onChange={handleChangeReceita} />
-                      <RadioLabel />
-                      <span> Receita </span>
+                      <RadioLabel><img src={Check}/></RadioLabel>
+                      <LegendRadio> Receita </LegendRadio>
+                  </Item>
+                  <Item>
                       <Radio type="radio" name="receita" value="Despesa" checked={despesa} onChange={handleChangeDespesa} />
-                      <RadioLabel />
-                      <span> Despesa </span>
-                  </div>
+                      <RadioLabel><img src={Check} alt="Check icon"/></RadioLabel>
+                      <LegendRadio> Despesa </LegendRadio>
+                  </Item>
               </RecDesp>
             </Tipo>
             <button> <img src={Mais} alt="sinal mais" /> ADICIONAR  </button>

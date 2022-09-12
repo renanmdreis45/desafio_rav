@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Container =  styled.div `
   position: relative;
-  width: 100%;
+  width: 1366px;
+  overflow-x: auto;
   height: 768px;
   background: #F8F8F8;
 `;
@@ -38,5 +39,6 @@ export const Interface = styled.div `
   height: 546px;
   left: 125px;
   top: 159px;
+  
 `;
 

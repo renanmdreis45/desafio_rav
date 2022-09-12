@@ -54,4 +54,11 @@ td {
     border-radius: 8px;
 }
 
+#chart {
+    margin: 30px;
+}
 
+.apexcharts-yaxis-label {
+    color: #BCBCBC;
+
+}
