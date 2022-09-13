@@ -1,10 +1,11 @@
 import React, {createContext, useReducer} from 'react';
 import GlobalReducer from './reducer';
+import  axios  from 'axios';
 
 const initialState = {
-    movements: [
-        {id: 1, valor: 1200, data: '12/02/2022', obs:'Pagamento faculdade', tipo: 'Despesa'}
-    ]        
+    movements: [],
+    error: null,
+    loading: true        
 }
 
 
@@ -12,23 +13,75 @@ export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(GlobalReducer, initialState);
+    
+    async function getMovements() {
+        try {
+           const res = await axios.get("/api/v1/movements");
 
-    function addMovement(movement) {
-        dispatch({
-            type: 'ADD_MOVEMENT',
-            payload: movement
-        });
+           dispatch({
+            type:'GET_MOVEMENTS',
+            payload: res.data.data
+           });
+
+        } catch (err) {
+
+           dispatch({
+            type:'MOVEMENT_ERROR',
+            payload: err.response.data.error
+           });
+
+        }
+
     }
 
-    function deleteMovement(id) {
-        dispatch({
-            type:'DELETE_MOVEMENT',
-            payload: id
-        })
+    async function addMovement(movement) {
+      const head = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+       }
+       
+       try {
+          const res = await axios.post('/api/v1/movements', movement, head);
+
+          dispatch({
+            type: 'ADD_MOVEMENT',
+            payload: res.data.data
+        });
+
+        } catch(err) {
+          dispatch({
+             type: 'MOVEMENT_ERROR ',
+             payload: err.response.data.error
+        }); 
+
+       }
+    }
+
+     async function deleteMovement(id) {
+
+        try {
+            await axios.delete(`/api/v1/movements/${id}`);
+  
+            dispatch({
+              type: 'DELETE_MOVEMENT',
+              payload: id
+          });
+  
+          } catch(err) {
+            dispatch({
+               type: 'MOVEMENT_ERROR ',
+               payload: err.response.data.error
+          }); 
+  
+         }
     }
 
     return (<GlobalContext.Provider value={{
         movements: state.movements,
+        error: state.error,
+        loading: state.loading,
+        getMovements,
         deleteMovement,
         addMovement
     }}>

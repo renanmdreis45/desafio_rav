@@ -31,7 +31,6 @@ export const AddMovement = () => {
     e.preventDefault();
  
     const newMov = {
-        id: Math.floor(Math.random() * 100000000),
         valor: +valor,
         data,
         obs,

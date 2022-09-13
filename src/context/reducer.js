@@ -1,10 +1,16 @@
 export default (state, action) => {
     switch(action.type) {
+        case 'GET_MOVEMENTS':
+            return {
+                ...state,
+                loading: false,
+                movements: action.payload
+            }
 
         case 'ADD_MOVEMENT':
             return {
                 ...state,
-                movements: [action.payload, ...state.movements]
+                movements: [...state.movements, action.payload]
             }
 
         case 'DELETE_MOVEMENT':
@@ -12,7 +18,13 @@ export default (state, action) => {
                 ...state,
                 movements: state.movements.filter(movement => movement.id !== action.payload)
             } 
-            
+        
+        case 'MOVEMENT_ERROR':
+            return {
+              ...state,
+              error: action.payload
+            }
+
         default:
             return state;
 

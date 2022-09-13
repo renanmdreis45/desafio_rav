@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './styles/compStyles.css'
 import { GlobalContext } from '../context/global';
 import {Movement} from './Movement';
@@ -7,10 +7,17 @@ import TableBody from '@mui/material/TableBody';
 import TableHead from '@mui/material/TableHead';
 
 export const MovementList = () => {
-  const { movements } = useContext(GlobalContext);
+  const { movements, getMovements } = useContext(GlobalContext);
+  
+
+  useEffect(() => {
+    getMovements();
+    
+  }, []);
+
 
   const movementList = movements.map((movement) => (
-    <tr  key = {movement.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+    <tr  key = {movement._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
        <Movement movement = {movement} /> 
     </tr>
   ))

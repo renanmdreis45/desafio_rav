@@ -13,6 +13,7 @@ export const Mov = styled.div `
 
   h2 {
     position: absolute;
+    font-family: Poppins;
     width: 190px;
     height: 34px;
     top: 30px;
@@ -251,6 +252,7 @@ export const Radio = styled.input `
 
 export const Column = styled.td `
   font-weight: 600;
+  font-family: Poppins;
   text-align: left;
   padding-bottom: 5px;
   padding-top: 5px;
