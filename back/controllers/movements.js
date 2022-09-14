@@ -1,8 +1,5 @@
 const Movement = require('../models/Movement');
 
-// @desc    Get all transactions
-// @route   GET /api/v1/transactions
-// @access  Public
 exports.getMovements = async (req, res) => {
   try {
     const movements = await Movement.find();
@@ -20,9 +17,6 @@ exports.getMovements = async (req, res) => {
   }
 }
 
-// @desc    Add transaction
-// @route   POST /api/v1/transactions
-// @access  Public
 exports.addMovement = async (req, res) => {
   try {
     const { valor, data, obs, tipo } = req.body;
@@ -52,9 +46,10 @@ exports.addMovement = async (req, res) => {
 
 
 exports.deleteMovement = async (req, res) => {
+  const id = req.params.id
+  
+  const movement = await Movement.findOne({ _id: id })
   try {
-    const movement = await Movement.findById(req.params.id);
-
     if(!movement) {
       return res.status(404).json({
         success: false,
@@ -62,7 +57,7 @@ exports.deleteMovement = async (req, res) => {
       });
     }
 
-    await movement.remove();
+    await Movement.deleteOne({_id: id});
 
     return res.status(200).json({
       success: true,

@@ -5,7 +5,7 @@ import Check from './styles/check.png'
 import Mais from './icons/mais.png'
 
 export const AddMovement = () => {
-  const [valor, setValor] = useState(null);
+  const [valor, setValor] = useState();
   const [data, setData] = useState('');
   const [obs, setObs] = useState('');
   const [receita, setReceita] = useState(false);
@@ -38,8 +38,20 @@ export const AddMovement = () => {
     }
     
     addMovement(newMov);
-  
+
+    setValor();
+    setData('');
+    setObs('');
+    setDespesa(false);
+    setReceita(false);
+    setTipo('');
+
+    clearFields(e);
   }
+
+  function clearFields(event){
+    Array.from(event.target).forEach( (e) => (e.value = ''))
+ }
 
     return(
       <>
@@ -49,11 +61,11 @@ export const AddMovement = () => {
             <ValueData>
                 <Value>
                 <label htmlFor="valor">Valor</label>
-                <input type="number" value={valor} onChange={(e) => setValor(e.target.value)} placeholder = "Digite o valor" />
+                <input type="number" value={valor} onChange={(e) => setValor(e.target.value)} placeholder = "Digite o valor" required/>
                 </Value>
                 <Data>
                 <label htmlFor="data">Data</label>
-                <input type="text" value={data} onChange={(e) => setData(e.target.value)} placeholder = "Selecione a data" />
+                <input type="text" value={data} onChange={(e) => setData(e.target.value)} placeholder = "Selecione a data" required/>
                 </Data>
             </ValueData>
             <Observacao>
@@ -64,12 +76,12 @@ export const AddMovement = () => {
               <p>Tipo de movimentação</p>
               <RecDesp>
                   <Item>
-                      <Radio type="radio" name="receita" value="Receita" checked={receita} onChange={handleChangeReceita} />
+                      <Radio type="radio" name="receita" value="Receita" checked={receita} onChange={handleChangeReceita} required/>
                       <RadioLabel><img src={Check}/></RadioLabel>
                       <LegendRadio> Receita </LegendRadio>
                   </Item>
                   <Item>
-                      <Radio type="radio" name="receita" value="Despesa" checked={despesa} onChange={handleChangeDespesa} />
+                      <Radio type="radio" name="receita" value="Despesa" checked={despesa} onChange={handleChangeDespesa} required/>
                       <RadioLabel><img src={Check} alt="Check icon"/></RadioLabel>
                       <LegendRadio> Despesa </LegendRadio>
                   </Item>

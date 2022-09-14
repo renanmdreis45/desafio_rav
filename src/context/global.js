@@ -16,7 +16,7 @@ export const GlobalProvider = ({ children }) => {
     
     async function getMovements() {
         try {
-           const res = await axios.get("/api/v1/movements");
+           const res = await axios.get('/movements');
 
            dispatch({
             type:'GET_MOVEMENTS',
@@ -42,7 +42,7 @@ export const GlobalProvider = ({ children }) => {
        }
        
        try {
-          const res = await axios.post('/api/v1/movements', movement, head);
+          const res = await axios.post('/movements', movement, head);
 
           dispatch({
             type: 'ADD_MOVEMENT',
@@ -61,7 +61,7 @@ export const GlobalProvider = ({ children }) => {
      async function deleteMovement(id) {
 
         try {
-            await axios.delete(`/api/v1/movements/${id}`);
+            await axios.delete(`/movements/${id}`);
   
             dispatch({
               type: 'DELETE_MOVEMENT',

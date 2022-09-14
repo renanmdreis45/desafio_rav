@@ -25,7 +25,7 @@ export const Movement = ({movement}) => {
 
     const handleClick = () => {
 
-        deleteMovement(movement.id);
+        deleteMovement(movement._id);
 
     }
 

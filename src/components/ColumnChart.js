@@ -51,7 +51,7 @@ export const ColumnChart = () => {
 
         options: {
           chart: {
-            offsetY: 0,
+            offsetY: 5,
             offsetX: 0,
             toolbar: {
               show: false,
@@ -68,7 +68,7 @@ export const ColumnChart = () => {
             align: 'left',
             margin: -30,
             offsetX: -2,
-            offsetY: 20,
+            offsetY: 10,
             floating: false,
             style: {
               fontSize:  '22.4px',
@@ -76,13 +76,23 @@ export const ColumnChart = () => {
               fontFamily:  'Poppins',
               color:  '#263238'
             },
-          },        
+          },
+          tooltip: {
+            enabled:false,
+          },
           colors: colors,
           plotOptions: {
             bar: {
-              columnWidth: '61px',
+              id:'bar',
               distributed: true,
               borderRadius: 8,
+              colors: {
+                ranges: [{
+                    from: 135,
+                    to: 145,
+                    color: colors
+                }],
+            },
             }
           },
           dataLabels: {
@@ -96,7 +106,7 @@ export const ColumnChart = () => {
             fontFamily:  'Poppins',
             fontSize: '14px',
             offsetX: 0,
-            offsetY: -10,
+            offsetY: -20,
             customLegendItems: ['Despesas', 'Receitas'],
             markers: {
               width: 16,
@@ -106,14 +116,13 @@ export const ColumnChart = () => {
               fillColors: legends,
               radius: 2,
               customHTML: undefined,
-              onClick: undefined,
               offsetX: 0,
               offsetY: 3
-          },
-          itemMargin: {
+            },
+            itemMargin: {
             horizontal: 14,
             vertical: 5
-        },
+            },
           },
           xaxis: {
             categories: [
@@ -141,9 +150,17 @@ export const ColumnChart = () => {
           borderColor: '#E0E0E0',
           strokeDashArray: 3,
           position: 'back',
+          padding: {
+            top: 10,
+            right: 0,
+            bottom: 0,
+            left: 0
+          },
          },
           yaxis: {
             show:true,
+            range: 30,
+            forceNiceScale: true,
             labels: {
               show: true,
               align: 'left',

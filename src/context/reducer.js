@@ -16,7 +16,7 @@ export default (state, action) => {
         case 'DELETE_MOVEMENT':
             return {
                 ...state,
-                movements: state.movements.filter(movement => movement.id !== action.payload)
+                movements: state.movements.filter(movement => movement._id !== action.payload)
             } 
         
         case 'MOVEMENT_ERROR':
